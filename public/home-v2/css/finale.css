@@ -1,0 +1,167 @@
+/* ==========================================================================
+   09 · Now building — cinematic full-bleed closing frame
+   10 · Contact      — deliberately bare
+   ========================================================================== */
+
+.finale {
+  position: relative;
+  height: 270svh;
+  background: var(--ink);
+  color: var(--bone);
+}
+.finale__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  --mx: 0;
+  --my: 0;
+}
+
+.finale__frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  clip-path: inset(17svh 13vw);
+  will-change: clip-path;
+}
+.finale__photo {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.28);
+  will-change: transform;
+}
+.finale__photo img { width: 100%; height: 100%; object-fit: cover; }
+.finale__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.38), transparent 28%, transparent 50%, rgb(0 0 0 / 0.72));
+  pointer-events: none;
+}
+
+.finale__kicker {
+  position: absolute;
+  z-index: 3;
+  left: var(--pad);
+  top: calc(var(--nav-h) + 2.4svh);
+  color: var(--lime);
+  pointer-events: none;
+}
+
+.finale__title {
+  position: absolute;
+  z-index: 3;
+  left: calc(var(--pad) - 0.02em);
+  bottom: 4.5svh;
+  font-size: clamp(110px, min(27vw, 42svh), 520px);
+  line-height: 0.8;
+  color: var(--bone);
+  pointer-events: none;
+}
+.finale__title .line {
+  overflow: hidden;
+  padding: 0.05em 0.02em;
+  margin: -0.05em -0.02em;
+}
+.finale__title .line > span {
+  display: block;
+  transform: translate3d(0, 112%, 0);
+  transition: transform 1.3s var(--ease);
+}
+.finale__title .line:nth-child(2) > span { transition-delay: 0.12s; }
+.finale.is-title .finale__title .line > span { transform: none; }
+
+/* Metadata floating at different depths. */
+.finale__tags {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.tag {
+  position: absolute;
+  padding: 8px 13px;
+  background: var(--lime);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.8s 0.5s;
+  translate: calc(var(--mx) * var(--k, 30) * 1px) calc(var(--my) * var(--k, 30) * 1px);
+}
+.finale.is-title .tag { opacity: 1; }
+.tag--0 { --k: 46;  right: 14vw; top: 26svh; }
+.tag--1 { --k: -34; right: 30vw; top: 43svh; background: var(--bone); }
+.tag--2 { --k: 62;  right: 8vw;  top: 52svh; background: var(--magenta); }
+.tag--3 { --k: -52; right: 22vw; top: 66svh; background: var(--blue); color: var(--bone); }
+
+.finale__line {
+  position: absolute;
+  z-index: 3;
+  right: var(--pad);
+  bottom: 5svh;
+  max-width: 17ch;
+  text-align: right;
+  font-family: var(--f-serif);
+  font-size: clamp(24px, 2.6vw, 46px);
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.9s 0.7s, transform 1.2s var(--ease) 0.7s;
+}
+.finale.is-title .finale__line { opacity: 1; transform: none; }
+
+@media (max-width: 760px) {
+  .finale { height: 240svh; }
+  .finale__frame { clip-path: inset(16svh 6vw); }
+  .finale__title { font-size: clamp(100px, min(38vw, 26svh), 260px); bottom: 12svh; }
+  .finale__line { left: var(--pad); right: auto; text-align: left; bottom: 4svh; max-width: 22ch; font-size: 24px; }
+  .tag--0 { right: 6vw; top: 22svh; }
+  .tag--1 { right: auto; left: 8vw; top: 32svh; }
+  .tag--2 { right: 8vw; top: 40svh; }
+  .tag--3 { display: none; }
+}
+
+/* ---------- 10 · Contact ---------- */
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(32px, 6svh, 72px);
+  min-height: 100svh;
+  padding: clamp(90px, 14svh, 150px) var(--pad) 26px;
+  background: var(--red);
+  color: var(--ink);
+}
+.footer__cta {
+  display: block;
+  font-size: clamp(110px, min(25vw, 44svh), 480px);
+  line-height: 0.8;
+  transition: color 0.4s;
+}
+.footer__cta:hover { color: var(--bone); }
+
+.footer__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--pad);
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+  font-size: 15px;
+  font-style: normal;
+}
+.footer__col { font-style: normal; }
+.footer__col a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat; transition: background-size 0.4s var(--ease); }
+.footer__col a:hover { background-size: 100% 1.5px; }
+.footer__social { display: grid; gap: 4px; justify-items: start; }
+.footer__fine { opacity: 0.75; }
+
+@media (max-width: 760px) {
+  .footer__row { grid-template-columns: 1fr 1fr; row-gap: 26px; }
+  .footer__cta { font-size: clamp(120px, 38vw, 240px); }
+}

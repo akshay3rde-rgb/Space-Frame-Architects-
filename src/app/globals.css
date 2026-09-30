@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ---- Palette ---- */
+  --color-ivory: #f4f0e8;
+  --color-offwhite: #faf9f6;
+  --color-sand: #ded8cc;
+  --color-sage: #b8c2b1;
+  --color-dustyblue: #b8c7d3;
+  --color-clay: #c9a99a;
+  --color-peach: #e7c9ba;
+  --color-charcoal: #171717;
+  --color-black: #0d0d0d;
+
+  /* ---- Type ---- */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  /* ---- Easing ---- */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Breakpoints (defaults kept, container added below) ---- */
+  --container-content: 1600px;
+}
+
+:root {
+  --bg: var(--color-ivory);
+  --fg: var(--color-charcoal);
+}
+
+* {
+  border-color: color-mix(in srgb, var(--color-charcoal) 12%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+/* Slim, quiet scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-charcoal) 25%, transparent);
+  border: 2px solid var(--color-ivory);
+  border-radius: 999px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-charcoal);
+  outline-offset: 3px;
+}
+
+/* ---- Editorial type utilities ---- */
+.font-serif {
+  font-family: var(--font-serif);
+}
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.text-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+
+.text-huge {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.015em;
+}
+
+.text-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.text-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ---- Layout ---- */
+.container-edit {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .container-edit {
+    padding-inline: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-edit {
+    padding-inline: 3rem;
+  }
+}
+
+.grid-edit {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .grid-edit {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .grid-edit {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Hairline rule */
+.rule {
+  height: 1px;
+  background: color-mix(in srgb, var(--color-charcoal) 18%, transparent);
+}
+.rule-light {
+  height: 1px;
+  background: color-mix(in srgb, var(--color-offwhite) 22%, transparent);
+}
+
+/* Hide scrollbar for drag-carousels while remaining scrollable */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

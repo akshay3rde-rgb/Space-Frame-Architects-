@@ -1,0 +1,250 @@
+/* ==========================================================================
+   01 · Intro — lime field, SPACE behind a photograph, FRAME in front of it.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  background: var(--lime);
+  color: var(--ink);
+  overflow: hidden;
+  isolation: isolate;
+  --word: min(30vw, 41svh);
+}
+
+/* Drafting-sheet hairlines. */
+.hero__ticks i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--ink);
+  opacity: 0.13;
+  z-index: 0;
+}
+.hero__ticks i:nth-child(1) { left: 20%; }
+.hero__ticks i:nth-child(2) { left: 40%; }
+.hero__ticks i:nth-child(3) { left: 60%; }
+.hero__ticks i:nth-child(4) { left: 80%; }
+
+/* The two giant words. */
+.hero__word {
+  position: absolute;
+  z-index: 1;
+  font-size: var(--word);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 0.8;
+}
+.hero__word--a {
+  left: calc(var(--pad) - 0.03em);
+  top: calc(var(--nav-h) + 1svh);
+}
+.hero__word--b {
+  right: calc(var(--pad) - 0.03em);
+  bottom: 2.5svh;
+  z-index: 3;
+}
+.hero .mask {
+  display: block;
+  overflow: hidden;
+  padding: 0.05em 0.02em;
+  margin: -0.05em -0.02em;
+}
+.hero .mask > span {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition: transform 1.4s var(--ease);
+}
+.hero__word--b .mask > span { transition-delay: 0.14s; }
+.is-ready .hero .mask > span { transform: none; }
+
+/* Photographs: parallax on scroll (transform), mouse depth (translate). */
+.hero__fig {
+  position: absolute;
+  display: block;
+  translate: calc(var(--mx, 0) * -28px) calc(var(--my, 0) * -20px);
+}
+.hero__fig--main {
+  z-index: 2;
+  left: 58.5%;
+  top: calc(var(--nav-h) + 6svh);
+  width: min(26vw, 46svh);
+}
+.hero__fig--small {
+  z-index: 2;
+  left: 31%;
+  top: 47svh;
+  width: min(12.5vw, 22svh);
+  translate: calc(var(--mx, 0) * 34px) calc(var(--my, 0) * 26px);
+}
+.hero__fig-in {
+  display: block;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.5s var(--ease) 0.35s;
+}
+.hero__fig--main .hero__fig-in { aspect-ratio: 3 / 4.25; }
+.hero__fig--small .hero__fig-in { aspect-ratio: 3 / 4; transition-delay: 0.6s; }
+.is-ready .hero__fig-in { clip-path: inset(0); }
+.hero__photo, .hero__photo img { display: block; width: 100%; height: 100%; }
+.hero__photo img {
+  object-fit: cover;
+  transform: scale(1.25);
+  transition: transform 2.2s var(--ease) 0.35s;
+}
+.is-ready .hero__photo img { transform: scale(1); }
+.hero__fig:hover .hero__photo img { transform: scale(1.06); transition-delay: 0s; transition-duration: 1.2s; }
+
+.hero__cap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 6px 9px;
+  background: var(--ink);
+  color: var(--lime);
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.8s 1.5s;
+}
+.is-ready .hero__cap { opacity: 1; }
+
+/* Facts, lede, badge. */
+.hero__meta {
+  position: absolute;
+  z-index: 2;
+  left: var(--pad);
+  top: calc(var(--nav-h) + 1svh + var(--word) * 0.8 + 3svh);
+  display: grid;
+  gap: 10px;
+  width: min(22vw, 300px);
+}
+.hero__meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1.5px solid var(--ink);
+}
+.hero__meta dt { opacity: 0.55; }
+.hero__meta dd { text-align: right; }
+
+.hero__lede {
+  position: absolute;
+  z-index: 2;
+  left: var(--pad);
+  bottom: 13svh;
+  max-width: 18ch;
+  font-family: var(--f-serif);
+  font-size: clamp(22px, 2.2vw, 36px);
+  line-height: 1.05;
+}
+
+.hero__badge {
+  position: absolute;
+  z-index: 2;
+  right: var(--pad);
+  top: calc(var(--nav-h) + 3svh);
+  width: clamp(96px, 9.5vw, 156px);
+  aspect-ratio: 1;
+  color: var(--ink);
+}
+.hero__badge text {
+  font: 500 12.6px var(--f-mono);
+  fill: currentColor;
+  letter-spacing: 0.04em;
+}
+.hero__badge-ring {
+  transform-origin: 100px 100px;
+  animation: spin 30s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.hero__cities {
+  position: absolute;
+  z-index: 2;
+  right: calc(var(--pad) - 4px);
+  top: calc(var(--nav-h) + 3svh + clamp(96px, 9.5vw, 156px) + 3svh);
+  writing-mode: vertical-rl;
+  font-size: 10.5px;
+  opacity: 0.7;
+}
+
+.hero__scroll {
+  position: absolute;
+  z-index: 4;
+  left: var(--pad);
+  bottom: 4svh;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero__scroll i {
+  position: relative;
+  width: 56px;
+  height: 1.5px;
+  background: color-mix(in srgb, var(--ink) 25%, transparent);
+  overflow: hidden;
+}
+.hero__scroll i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  animation: scroll-cue 2.2s var(--ease-io) infinite;
+}
+@keyframes scroll-cue {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+
+/* ---------- Small screens & portrait tablets: stacked composition ---------- */
+@media (max-width: 760px), (max-width: 1100px) and (orientation: portrait) {
+  .hero {
+    --word: min(36vw, 21svh);
+    min-height: 600px;
+  }
+  .hero__word--a { top: calc(var(--nav-h) + 0.5svh); }
+  .hero__word--b { bottom: 9svh; }
+
+  .hero__fig--main {
+    left: auto;
+    right: var(--pad);
+    top: calc(var(--nav-h) + var(--word) * 0.8 + 1svh);
+    width: min(58vw, 38svh);
+  }
+  .hero__fig--small {
+    left: var(--pad);
+    top: auto;
+    bottom: calc(9svh + var(--word) * 0.8 - 5svh);
+    width: min(30vw, 20svh);
+  }
+  .hero__cap { display: none; }
+  .hero__meta {
+    left: var(--pad);
+    top: calc(var(--nav-h) + var(--word) * 0.8 + 2svh);
+    width: calc(100vw - var(--pad) * 2 - min(58vw, 38svh) - 14px);
+    gap: 8px;
+  }
+  .hero__meta div { flex-direction: column; gap: 2px; }
+  .hero__meta dd { text-align: left; }
+  .hero__meta div:nth-child(3) { display: none; }
+  .hero__lede { display: none; }
+  .hero__badge {
+    width: 88px;
+    right: auto;
+    left: var(--pad);
+    top: auto;
+    /* sits directly above the small photograph, below the facts */
+    bottom: calc(9svh + var(--word) * 0.8 - 5svh + min(30vw, 20svh) * 1.334 + 2svh);
+    z-index: 2;
+  }
+  .hero__cities { display: none; }
+  .hero__scroll { bottom: 3svh; }
+}
+
+@media (max-height: 560px) and (min-width: 761px) {
+  .hero { min-height: 560px; }
+}
