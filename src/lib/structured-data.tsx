@@ -11,9 +11,10 @@ export function organizationSchema() {
     telephone: site.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.line1,
+      streetAddress: site.address.street,
       addressLocality: site.city,
       addressRegion: site.state,
+      postalCode: site.address.postalCode,
       addressCountry: "IN",
     },
     sameAs: site.socials.map((s) => s.href),
@@ -32,9 +33,10 @@ export function localBusinessSchema() {
     priceRange: "$$$",
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.line1,
+      streetAddress: site.address.street,
       addressLocality: site.city,
       addressRegion: site.state,
+      postalCode: site.address.postalCode,
       addressCountry: "IN",
     },
     areaServed: site.cities.map((c) => ({ "@type": "City", name: c })),

@@ -14,7 +14,7 @@ export const site = {
   state: "Madhya Pradesh",
   email: "hello@spaceframearchitects.in",
   phone: "+91 98765 43210",
-  address: ["14 Residency Road, South Tukoganj", "Indore, Madhya Pradesh 452001"],
+  address: ["247 Anoop Nagar, Opposite CHL Hospital, AB Road", "Indore, Madhya Pradesh 452018"],
   socials: [
     { label: "Instagram", href: "https://instagram.com/spaceframearchitects" },
     { label: "LinkedIn", href: "https://linkedin.com/company/spaceframearchitects" },

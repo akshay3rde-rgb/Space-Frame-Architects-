@@ -5,7 +5,7 @@ export const timeline: TimelineEntry[] = [
     year: "1999",
     title: "THE BEGINNING",
     description:
-      "Aniruddha Deshpande opened a two-room studio on Residency Road with a single draughtsman, taking on house renovations and small residential commissions across Indore.",
+      "Aniruddha Deshpande opened a two-room studio in Anoop Nagar with a single draughtsman, taking on house renovations and small residential commissions across Indore.",
   },
   {
     year: "2005",

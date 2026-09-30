@@ -21,8 +21,10 @@ export const site = {
   phone: "+91 98765 43210",
   phoneDisplay: "+91 98765 43210",
   address: {
-    line1: "14 Residency Road, South Tukoganj",
-    line2: "Indore, Madhya Pradesh 452001",
+    line1: "247 Anoop Nagar, Opposite CHL Hospital, AB Road",
+    line2: "Indore, Madhya Pradesh 452018",
+    street: "247 Anoop Nagar, Opposite CHL Hospital, AB Road",
+    postalCode: "452018",
     country: "India",
   },
   socials: [

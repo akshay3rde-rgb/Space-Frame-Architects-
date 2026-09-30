@@ -9,7 +9,7 @@ export const cities: CityContent[] = [
     editorial:
       "Indore doesn't sit still. It is Madhya Pradesh's commercial engine, a city of jewellery lanes and IT parks, sarafa-market food stalls that open at midnight and gated colonies that keep expanding at its edges. The older city — Rajwada, Sarafa, the narrow streets around Khajuri Bazaar — still runs on a density and a street life that the newer suburbs haven't figured out how to replicate. Building here means answering to both: the informal, densely negotiated logic of the old town, and the plot-by-plot speculation of everywhere else.",
     approach:
-      "SpaceFrame is based two streets from Residency Road, and Indore is where the studio tests most of its ideas first — on houses, offices and interiors for clients who are often also neighbours. The city's semi-arid climate, punishing from April through June and then flipped entirely by the monsoon, shapes almost every brief: courtyards, deep shade, cross-ventilation, and a healthy scepticism toward glass that isn't shielded from the west.",
+      "SpaceFrame is based in Anoop Nagar, on AB Road opposite CHL Hospital, and Indore is where the studio tests most of its ideas first — on houses, offices and interiors for clients who are often also neighbours. The city's semi-arid climate, punishing from April through June and then flipped entirely by the monsoon, shapes almost every brief: courtyards, deep shade, cross-ventilation, and a healthy scepticism toward glass that isn't shielded from the west.",
     stats: [
       { label: "Projects", value: "4" },
       { label: "Active since", value: "1999" },
